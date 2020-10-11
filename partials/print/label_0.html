@@ -1,0 +1,23 @@
+<div style="background: #fff; padding: 20px; display: inline-block; user-select: none; width: {$label.preview_width}px; height: {$label.preview_height}px;">
+	<div class="code_wrap" style="border-radius: 16px; overflow: hidden; width: 100%; height: 100%;">
+		<div class="code_manufacturer">{$label.company_title}</div>
+		<div class="code_title">{$label.product_title}</div>
+		<div class="code_main">
+			<div class="code_main_left" style="width: 100%;">
+				<div class="code_info">
+					{section name=i loop=$label.options}
+					{if $label.options[i].title}
+					<div>
+						<div style="width: 50%; height: {$label.preview_row}px; vertical-align: middle;">{$label.options[i].title_print}</div>
+						<div style="width: 50%; height: {$label.preview_row}px; vertical-align: middle;">{$label.options[i].value}</div>
+					</div>
+					{/if}
+					{/section}
+				</div>
+			</div>
+			<div class="code_main_right" style="width: 0%; min-width: {$label.preview_code}px;">
+				<img src="{$label.qr}" class="code_qr">
+			</div>
+		</div>
+	</div>
+</div>

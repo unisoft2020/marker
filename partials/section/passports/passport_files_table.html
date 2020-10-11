@@ -1,0 +1,44 @@
+{if $files}
+<div>
+	<div style="width: 4%;"></div>
+	<div style="width: 10%;">Раздел</div>
+	<div style="width: 10%;">Статус</div>
+	<div style="width: 30%;">Название</div>
+	<div style="width: 6%;">Отдел</div>
+	<div style="width: 24%;">Кто загрузил</div>
+	<div style="width: 16%;">Загружено</div>
+	<div style="width: 0%;"></div>
+</div>
+{section name=i loop=$files}
+<div onclick="passport.file_open('{$files[i].path}');">
+	<div style="text-align: center;">{$files[i].number}</div>
+	<div><span style="display: block; text-overflow: ellipsis; white-space: nowrap; max-width: 80px; overflow: hidden;" title="{$files[i].sub_title}">{$files[i].sub_title}</span></div>
+	<div style="font-weight: 600; {if $files[i].status_id == 2}color: #cb0000;{elseif $files[i].status_id == 1}color: #048F12;{else}color: #04368F;{/if}">{$files[i].status_title}</div>
+	<div>
+		<div style="color: #04368F; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; max-width: 250px; overflow: hidden;" title="{$files[i].title}">{$files[i].title}</div>
+		<div style="margin-top: 5px;">{$files[i].size} Mb</div>
+	</div>
+	<div>{$files[i].owner_groups}</div>
+	<div>
+		<div style="color: #04368F; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; max-width: 200px; overflow: hidden;">{$files[i].owner_name}{if $files[i].owner_occupation} ({$files[i].owner_occupation}){/if}</div>
+		<div style="margin-top: 5px;">{$files[i].owner_email}, тел.: {$files[i].owner_phone}</div>
+	</div>
+	<div>{$files[i].created}</div>
+	<div>
+		<i class="icon icon_ellipsis" onclick="common.menu_popup_toggle(this, event);">
+			<div class="menu_popup" style="width: 185px;">
+				{if $files[i].status_id != 1}
+				<div onclick="passport.file_status_update({$files[i].id}, 1);"><i class="icon icon_accept"></i> Принять</div>
+				{/if}
+				{if $files[i].status_id != 2}
+				<div onclick="passport.file_status_update({$files[i].id}, 2);"><i class="icon icon_revision"></i> На доработку</div>
+				{/if}
+				<div onclick="passport.file_edit_window({$files[i].id}, 'list');"><i class="icon icon_edit"></i> Редактировать</div>
+			</div>
+		</i>
+	</div>
+</div>
+{/section}
+{else}
+<div style="display: table-cell; margin-top: 15px; padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">В этот цифровой паспорт еще не загружены файлы.</div>
+{/if}

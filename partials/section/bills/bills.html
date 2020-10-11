@@ -1,0 +1,14 @@
+<div class="content_wrap" style="margin-bottom: 80px;">
+    <div style="width: 100%; min-height: 300px;">
+		<div class="content_title">Счета</div>
+		<div style="display: table; width: 100%; margin-top: 15px;">
+			<div style="display: table-cell; vertical-align: top;">
+				<div class="btn_primary" onclick="bill.create_window();" style="line-height: 30px; height: 30px;">Создать</div>
+			</div>
+			<div style="display: table-cell; vertical-align: top; text-align: right;">
+				<span id="bills_paginator">{$paginator}</span>
+			</div>
+		</div>
+		<div id="bills_table">{include file="./partials/section/bills/bills_table.html"}</div>
+    </div>
+</div>

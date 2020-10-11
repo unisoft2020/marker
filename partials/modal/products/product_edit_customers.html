@@ -1,0 +1,7 @@
+{if $customers}
+{section name=i loop=$customers}
+<div class="result_item" onclick="product.search_customer_select({$customers[i].id}, '{$customers[i].title}');">{$customers[i].title}</div>
+{/section}
+{else}
+<div class="result_item">Ничего не найдено ...</div>
+{/if}

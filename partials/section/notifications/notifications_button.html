@@ -1,0 +1,7 @@
+<div class="top_menu_item" id="notifications_button_item" style="right: 50px;" onclick="owner.notifications_popup_toggle();">
+	<div class="icon icon_bell" style="font-size: 22px; color: {if $owner.count_notifications}#04368f{else}#8e99b5{/if};">
+		{if $owner.count_notifications > 0}
+		<div class="notifications_count">{if $owner.count_notifications >= 100}99+{else}{$owner.count_notifications}{/if}</div>
+		{/if}
+	</div>
+</div>

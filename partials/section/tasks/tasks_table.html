@@ -1,0 +1,40 @@
+<div style="display: table-row; color: #04368f; font-weight: 600; font-size: 12px;">
+	<div style="display: table-cell; width: 10%; vertical-align: bottom; padding-bottom: 10px;">Дата<br>создания</div>
+	<div style="display: table-cell; width: 10%; vertical-align: bottom; padding-bottom: 10px;">Дата<br>завершения</div>
+	<div style="display: table-cell; width: 25%; vertical-align: bottom; padding-bottom: 10px;">Название</div>
+	<div style="display: table-cell; width: 20%; vertical-align: bottom; padding-bottom: 10px;">Исполнитель</div>
+	<div style="display: table-cell; width: 15%; vertical-align: bottom; padding-bottom: 10px;">Кол-во всего<br>/ к маркировке</div>
+	<div style="display: table-cell; width: 15%; vertical-align: bottom; padding-bottom: 10px;"></div>
+	<div style="display: table-cell; width: 5%; vertical-align: bottom; padding-bottom: 10px;"></div>
+</div>
+{section name=i loop=$tasks}
+<a class="task_item" href="/tasks/{$tasks[i].id}?act=edit">
+	<div style="display: table-cell; width: 10%; padding: 10px 0; border-top: 1px solid #ebedec; vertical-align: top; font-size: 12px;">
+		<div>{$tasks[i].date}</div>
+	</div>
+	<div style="display: table-cell; width: 10%; padding: 10px 0; border-top: 1px solid #ebedec; vertical-align: top; font-size: 12px;">
+		<div>{$tasks[i].date_end}</div>
+	</div>
+	<div style="display: table-cell; width: 25%; padding: 10px 0; border-top: 1px solid #ebedec; vertical-align: top; font-size: 12px; font-weight: 600;">{$tasks[i].title}</div>
+	<div style="display: table-cell; width: 20%; padding: 10px 0; border-top: 1px solid #ebedec; vertical-align: top; font-size: 12px;">
+		{if $tasks[i].users}
+		{section name=j loop=$tasks[i].users}
+		<div>{$tasks[i].users[j].full_name}</div>
+		{/section}
+		{else}
+		<div>-</div>
+		{/if}
+	</div>
+	<div style="display: table-cell; width: 15%; padding: 10px 0; border-top: 1px solid #ebedec; vertical-align: top; font-size: 12px;">{$tasks[i].products_all}/{$tasks[i].products_active}</div>
+	<div style="display: table-cell; width: 15%; padding: 10px 0; border-top: 1px solid #ebedec; vertical-align: top; position: relative;">
+		{if $tasks[i].status == 1}
+		<span class="home_product_item_status complete">Выполнено</span>
+		{else}
+		<span class="home_product_item_status wait">Запланировано</span>
+		{/if}
+	</div>
+	<div style="display: table-cell; width: 5%; padding: 10px 0; border-top: 1px solid #ebedec; vertical-align: top; position: relative; text-align: right;">
+		<i class="icon icon_delete_2" onclick="task.delete({$tasks[i].id});" style="font-size: 22px; color: #04368f; cursor: pointer; margin-top: 3px; margin-left: 10px; margin-right: 5px;"></i>
+	</div>
+</a>
+{/section}

@@ -1,0 +1,41 @@
+{if $groups}
+{section name=i loop=$groups}
+<div id="group_{$groups[i].id}" class="group_item droppable unselectable{if $groups[i].id == $group_id} active{/if}" onclick="product.group_change(this, {$groups[i].id});">
+	{if $groups[i].id}
+    <div class="group_item_icons">
+		<i class="icon icon_ellipsis" onclick="common.menu_popup_toggle(this, event);">
+			<div class="menu_popup">
+				{if $groups[i].status == 0 && (!$groups[i].user_id || $groups[i].user_id == $owner.user_id)}
+				<div onclick="product.group_edit_window({$groups[i].id});"><i class="icon icon_edit"></i> Редактировать</div>
+				<div onclick="product.group_files_window({$groups[i].id});"><i class="icon icon_doc"></i> Добавить документ</div>
+				{/if}
+				<div onclick="product.group_export({$groups[i].id});"><i class="icon icon_export"></i> Экспорт</div>
+				<div onclick="product.group_print({$groups[i].id});"><i class="icon icon_print"></i> Печать</div>
+				{if !$groups[i].user_id || $groups[i].user_id == $owner.user_id}
+				{if $groups[i].status == 0}
+				<div onclick="product.group_archive_toggle({$groups[i].id}, 1);"><i class="icon icon_archive_add"></i> Архивировать</div>
+				{elseif $groups[i].status == 1}
+				<div onclick="product.group_archive_toggle({$groups[i].id}, 0);"><i class="icon icon_archive_remove"></i> Восстановить</div>
+				{/if}
+				{/if}
+			</div>
+		</i>
+	</div>
+	{/if}
+	<div class="group_item_title">{$groups[i].title}</div>
+	<div class="group_item_options">
+		<div>Создано: <span>{$groups[i].created}</span></div>
+		{if $groups[i].customer.id}
+		<div>Заказчик: <span>{$groups[i].customer.title}</span></div>
+		{/if}
+		{if $groups[i].contract.id}
+		<div>Договор: <span>{$groups[i].contract.title} прил. {$groups[i].contract.annex_number}</span></div>
+		{/if}
+		<div>Количество: <span>{$groups[i].quantity} шт.</span></div>
+		<div>Этикетка: <span>{$groups[i].label_title}</span></div>
+	</div>
+</div>
+{/section}
+{else}
+<div style="margin-top: 15px; padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a; text-align: center;">партии не найдены</div>
+{/if}

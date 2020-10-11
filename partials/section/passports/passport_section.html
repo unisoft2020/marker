@@ -1,0 +1,20 @@
+<div style="padding: 20px 20px 50px 20px; background: #fff; min-height: 200px; padding-bottom: 170px;">
+	
+	<div class="passport_breadcrumbs">
+		<a href="/passports">все записи</a>
+		<i class="icon icon_next"></i>
+		<a href="/passports/{$passport.id}">{$passport.title}</a>
+		<i class="icon icon_next"></i>
+		<span>раздел {$section.number}</span>
+	</div>
+	
+	<div style="font-size: 18px; color: #04368f; margin-top: 10px;">Раздел {$section.number}. {$section.title}</div>
+	<div style="margin-top: 15px;">
+		<div onclick="passport.files_upload({$passport.id}, {$section.id}, 1, 0, 0, 0, 'common');" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">Загрузить</div>
+		<div onclick="passport.section_edit_window({$passport.id}, {$section.id}, 'detail');" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">Редактировать</div>
+	</div>
+	
+	<div style="font-size: 14px; font-weight: 600; margin-top: 20px;">Загруженные документы</div>
+	<div class="passport_sections" id="passport_files">{include file="./partials/section/passports/passport_sub_files_table.html"}</div>
+
+</div>

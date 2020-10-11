@@ -1,0 +1,15 @@
+<div class="product_edit_option_item">
+	<div class="product_edit_option_title"><input type="text" class="input_primary" placeholder="Название" value="{$option.title}" autocomplete="off" autocorrect="off" autocapitalize="off"></div>
+	<div class="product_edit_option_value"><input type="text" class="input_primary" placeholder="Значение" value="{$option.value}" autocomplete="off" autocorrect="off" autocapitalize="off"></div>
+	<div class="product_edit_option_units selector" onclick="common.results_toggle(this, event);">
+		<input type="text" class="input_primary" placeholder="Ед. измерения" value="{$option.units_title}" autocomplete="off" autocorrect="off" autocapitalize="off" style="cursor: pointer;">
+		<i class="icon icon_expand" style="position: absolute; top: 1px; right: 0px; font-size: 17px; cursor: pointer; line-height: 38px; padding: 0 14px;"></i>
+		<div class="results_container">
+			{section name=j loop=$units}
+			<div class="result_item" onclick="common.result_select(this, '{$units[j].title_short}', {$units[j].id}, 'icon');">{$units[j].title_short}{if $units[j].title_full != $units[j].title_short} ({$units[j].title_full}){/if}</div>
+			{/section}
+		</div>
+	</div>
+	<div class="product_edit_option_delete"><i class="icon icon_delete_2{if $count == 1} disabled{/if}" onclick="product.option_delete(this);"></i></div>
+	<input class="product_edit_option_id" type="hidden" value="{$option.id}">
+</div>

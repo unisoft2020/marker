@@ -1,0 +1,21 @@
+{section name=i loop=$files}
+<div class="product_edit_file_item" id="file_{$files[i].id}">
+	<div class="product_edit_file_icon">
+		{if $files[i].type == 1}
+		<i class="icon icon_pdf"></i>
+		{elseif $files[i].type == 2}
+		<i class="icon icon_word"></i>
+		{elseif $files[i].type == 3}
+		<i class="icon icon_excel"></i>
+		{elseif $files[i].type == 4}
+		<i class="icon icon_txt"></i>
+		{elseif $files[i].type == 5}
+		<i class="icon icon_jpg"></i>
+		{elseif $files[i].type == 6}
+		<i class="icon icon_png"></i>
+		{/if}
+	</div>
+	<div class="product_edit_file_name"><input type="text" class="input_primary" id="file_name_{$files[i].id}" value="{$files[i].title}" placeholder="Название документа" autocomplete="off" autocorrect="off" autocapitalize="off" disabled></div>
+	<div class="product_edit_file_delete"><i class="icon icon_delete_2" onclick="product.file_delete({$files[i].id});"></i></div>
+</div>
+{/section}

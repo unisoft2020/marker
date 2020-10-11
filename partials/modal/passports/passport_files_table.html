@@ -1,0 +1,20 @@
+{if $files}
+<div>
+	<div style="width: 14%; padding-left: 10px;">Раздел</div>
+	<div style="width: 12%;">Статус</div>
+	<div style="width: 47%;">Название</div>
+	<div style="width: 10%;">Кто загрузил</div>
+	<div style="width: 12%; text-align: right; padding-right: 10px;">Загружено</div>
+</div>
+{section name=i loop=$files}
+<div onclick="passport.file_open('{$files[i].path}');">
+	<div style="padding-left: 10px;"><span style="display: block; text-overflow: ellipsis; white-space: nowrap; max-width: 100px; overflow: hidden;" title="{$files[i].sub_title}">{$files[i].sub_title}</span></div>
+	<div style="font-weight: 600; {if $files[i].status_id == 2}color: #cb0000;{elseif $files[i].status_id == 1}color: #048F12;{else}color: #04368F;{/if}">{$files[i].status_title}</div>
+	<div><span style="display: block; text-overflow: ellipsis; white-space: nowrap; max-width: 320px; overflow: hidden;" title="{$files[i].title}">{$files[i].title}</span></div>
+	<div><span style="display: block; text-overflow: ellipsis; white-space: nowrap; max-width: 100px; overflow: hidden;">{$files[i].owner_groups}</span></div>
+	<div style="text-align: right; padding-right: 10px;">{$files[i].created}</div>
+</div>
+{/section}
+{else}
+<div style="display: table-cell; margin-top: 15px; padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">В этот цифровой паспорт еще не загружены файлы.</div>
+{/if}

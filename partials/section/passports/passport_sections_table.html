@@ -1,0 +1,33 @@
+{if $passport_sections}
+<div>
+	<div style="width: 5%;"></div>
+	<div style="width: 52%;">Название</div>
+	<div style="width: 13%;">Статус</div>
+	<div style="width: 11%;">Загружено</div>
+	<div style="width: 19%;">Кем обновлен</div>
+	<div style="width: 0%;"></div>
+</div>
+{section name=i loop=$passport_sections}
+<div onclick="passport.section_details({$passport_sections[i].passport_id}, {$passport_sections[i].id});">
+	<div style="text-align: center;">{$passport_sections[i].number}</div>
+	<div>{$passport_sections[i].title}</div>
+	<div style="color: {if $passport_sections[i].status_id == 2}#048F12{else}#04368F{/if}; font-weight: 600;">{$passport_sections[i].status_title}</div>
+	<div>{$passport_sections[i].files}</div>
+	<div>{$passport_sections[i].owner}</div>
+	<div>
+		<i class="icon icon_ellipsis" onclick="common.menu_popup_toggle(this, event);">
+			<div class="menu_popup" style="width: 140px;">
+				{if $passport_sections[i].status_id != 2}
+				<div onclick="passport.section_edit_window({$passport_id}, {$passport_sections[i].id}, 'list');"><i class="icon icon_edit"></i> Редактировать</div>
+				<div onclick="passport.section_archive_toggle({$passport_id}, {$passport_sections[i].id}, 'list', 'close');"><i class="icon icon_archive_add"></i> Архивировать</div>
+				{else}
+				<div onclick="passport.section_archive_toggle({$passport_id}, {$passport_sections[i].id}, 'list', 'open');"><i class="icon icon_archive_remove"></i> Восстановить</div>
+				{/if}
+			</div>
+		</i>
+	</div>
+</div>
+{/section}
+{else}
+<div style="display: table-cell; margin-top: 15px; padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">В этот цифровой паспорт еще не добавлены разделы.</div>
+{/if}

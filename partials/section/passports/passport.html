@@ -1,0 +1,27 @@
+<div style="padding: 20px 20px 50px 20px; background: #fff; min-height: 200px; padding-bottom: 170px;">
+	
+	<div class="passport_breadcrumbs">
+		<a href="/passports">все записи</a>
+		<i class="icon icon_next"></i>
+		<span>{$passport.title}</span>
+	</div>
+	
+	<div style="font-size: 18px; color: #04368f; margin-top: 10px;">{$passport.title}</div>
+	<div style="margin-top: 15px;">
+		<div onclick="passport.edit_window({$passport_id});" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">Редактировать</div>
+		<div onclick="passport.archive_toggle({$passport_id}, 2);" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">Архивировать</div>
+		<div onclick="passport.files_list({$passport_id});" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">Список файлов</div>
+	</div>
+	
+	<div style="font-size: 14px; font-weight: 600; margin-top: 20px;">Разделы паспорта</div>
+	<div class="passport_sections" id="passport_sections">{include file="./partials/section/passports/passport_sections_table.html"}</div>
+	
+	<div style="font-size: 14px; font-weight: 600; margin-top: 20px;">Приложения</div>
+	
+	<div style="margin-top: 15px;">
+		<div onclick="passport.annex_edit_window({$passport_id}, 0);" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">Добавить приложение</div>
+	</div>
+	
+	<div class="passport_sections" id="passport_annexes">{include file="./partials/section/passports/passport_annexes_table.html"}</div>
+
+</div>

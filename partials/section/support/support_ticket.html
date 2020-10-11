@@ -1,0 +1,19 @@
+<div class="content_wrap">
+	<div class="support_wrap">
+		<div style="display: table; width: 100%;">
+			<div style="display: table-cell; vertical-align: middle; width: 80%; padding: 0 15px 0 0;"><div class="content_title" style="word-break: break-all;">{$support.title}</div></div>
+			<div style="display: table-cell; vertical-align: middle; width: 20%; text-align: right;"><div class="btn_primary" onclick="document.location.href = '/support';" style="line-height: 30px; height: 30px; padding: 0 15px;">Назад</div></div>
+		</div>
+		<div style="width: 100%; margin-top: 15px; border-bottom: 1px solid #dce4ea; padding: 0 0 15px 0;">
+			<span style="display: inline-block; margin: 0 25px 0 0; font-size: 14px; color: #8a959b;">№ {$support.id}</span>
+			<span style="display: inline-block; margin: 0 25px 0 0; font-size: 14px; color: #8a959b;">Открыт: {$support.created}</span>
+			{if $support.status == "Закрыт"}
+			<span style="font-size: 14px; color: #8a959b;">Закрыт: {$support.updated}</span>
+			{/if}
+			{if $support.status != "Закрыт" && $support.updated != 0}
+			<span style="font-size: 14px; color: #8a959b;">Обновлен: {$support.updated}</span>
+			{/if}
+		</div>
+		<div id="support_ticket_table">{include file="./partials/section/support/support_ticket_table.html"}</div>
+	</div>
+</div>	

@@ -1,0 +1,64 @@
+<div style="display: table-cell; vertical-align: top; width: 45%; padding-right: 20px;">
+	<div style="width: 100%; min-height: 300px; border: 1px solid #c7d0d7; border-radius: 3px; padding: 20px;">
+		<div style="margin-top: 0px;">
+			<div class="input_label">Название этикетки</div>
+			<input type="text" id="title" class="input_primary" placeholder="Название" value="{$label.title}" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+		</div>
+		<div style="margin-top: 20px;">
+			<div class="input_label">Тип</div>
+			<div class="selector" style="width: 100%; position: relative;" onclick="common.results_toggle(this, event);">
+				<input type="text" id="type_title" class="input_primary" placeholder="Наименование" value="{$label.type_title}" disabled style="cursor: pointer;">
+				<input type="hidden" id="type_id" value="{$label.type_id}">
+				<i class="icon icon_expand" style="position: absolute; top: 1px; right: 0px; font-size: 17px; cursor: pointer; line-height: 38px; padding: 0 14px;"></i>
+				<div class="results_container">
+					{section name=i loop=$types}
+					<div class="result_item" onclick="common.result_select(this, '{$types[i].title}', {$types[i].id}, 'full'); label.update('type');">{$types[i].title}</div>
+					{/section}
+				</div>
+			</div>
+		</div>
+		<div style="margin-top: 20px; display: table; width: 100%;">
+			<div style="width: 50%; display: table-cell; padding-right: 10px;">
+				<div class="input_label" style="text-align: center;">Ширина, мм</div>
+				<div class="input_numeric">
+					<div><div {if $label.size_width != 60} onclick="label.size_update('width', 'minus', {$label.id});"{else} class="disabled"{/if}><i class="icon icon_minus"></i></div></div>
+					<div><input type="text" id="size_width" class="input_primary" value="{$label.size_width}" disabled></div>
+					<div><div {if $label.size_width != 100} onclick="label.size_update('width', 'plus', {$label.id});"{else} class="disabled"{/if}><i class="icon icon_plus"></i></div></div>
+				</div>
+			</div>
+			<div style="width: 50%; display: table-cell; padding-left: 10px;">
+				<div class="input_label" style="text-align: center;">Высота, мм</div>
+				<div class="input_numeric">
+					<div><div {if $label.size_height != 30} onclick="label.size_update('height', 'minus', {$label.id});"{else} class="disabled"{/if}><i class="icon icon_minus"></i></div></div>
+					<div><input type="text" id="size_height" class="input_primary" value="{$label.size_height}" disabled></div>
+					<div><div {if $label.size_height != 80} onclick="label.size_update('height', 'plus', {$label.id});"{else} class="disabled"{/if}><i class="icon icon_plus"></i></div></div>
+				</div>
+			</div>
+		</div>
+		<div style="margin-top: 20px; display: table; width: 100%;">
+			<div style="width: 50%; display: table-cell; padding-right: 10px;">
+				<div class="input_label" style="text-align: center;">Размер кода, мм</div>
+				<div class="input_numeric">
+					<div><div {if $label.size_code != 13} onclick="label.size_update('code', 'minus', {$label.id});"{else} class="disabled"{/if}><i class="icon icon_minus"></i></div></div>
+					<div><input type="text" id="size_code" class="input_primary" value="{$label.size_code}" disabled></div>
+					<div><div {if $label.size_code != 30} onclick="label.size_update('code', 'plus', {$label.id});"{else} class="disabled"{/if}><i class="icon icon_plus"></i></div></div>
+				</div>
+			</div>
+			<div style="width: 50%; display: table-cell; padding-left: 10px;">
+				<div class="input_label" style="text-align: center; {if $label.type_id == 4}display: none;{/if}">Высота ячеек, мм</div>
+				<div class="input_numeric" style="{if $label.type_id == 4}display: none;{/if}">
+					<div><div onclick="label.size_update('row', 'minus', {$label.id});"><i class="icon icon_minus"></i></div></div>
+					<div><input type="text" id="size_row" class="input_primary" value="{$label.size_row}" disabled></div>
+					<div><div onclick="label.size_update('row', 'plus', {$label.id});"><i class="icon icon_plus"></i></div></div>
+				</div>
+			</div>
+		</div>
+		<div style="margin-top: 20px; {if $label.type_id == 4}display: none;{/if}">
+			<div class="input_label">Название компании</div>
+			<input type="text" id="company_title" class="input_primary" placeholder="Название" value='{$label.company_title}' oninput="label.update('common'); input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+		</div>
+	</div>
+	<div style="margin-top: 20px; margin-bottom: 0px;">
+		<div class="btn_primary" onclick="label.save({$label.id});">Сохранить</div>
+	</div>
+</div>

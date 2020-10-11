@@ -1,0 +1,21 @@
+/* top */
+
+.home_top_group {width: 50%; display: table-cell; vertical-align: top;}
+.home_top_group:nth-child(1) {padding-right: 10px;}
+.home_top_group:nth-child(2) {padding-left: 10px;}
+
+.home_top_group_wrap {padding: 20px; border-radius: 5px; display: block; text-decoration: none; background: #fff; box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;}
+.home_top_title {font-size: 16px; color: #04368f; padding-bottom: 10px;}
+.home_top_text {font-size: 14px; font-weight: 400; color: #222; margin-top: 10px;}
+
+/* lists */
+
+.dashboard_table {display: table; width: 100%; margin-top: 10px;}
+
+.dashboard_table_item.header > div {color: #8A9AAC; padding: 8px 0;}
+.dashboard_table_item.header:first-child > div {border-top: 0;}
+
+.dashboard_table_item {display: table-row;}
+.dashboard_table_item > div {display: table-cell; border-bottom: 1px solid #cdd1d7; padding: 12px 0; font-size: 12px; color: #222; margin-top: 5px;}
+.dashboard_table_item:first-child > div {border-top: 1px solid #cdd1d7;}
+.dashboard_table_item > div:last-child {text-align: right;}

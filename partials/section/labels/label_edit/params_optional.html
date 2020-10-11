@@ -1,0 +1,24 @@
+<div style="width: 100%; min-height: 300px; border: 1px solid #c7d0d7; border-radius: 3px; padding: 20px; margin-top: 20px; {if $label.type_id == 4}display: none;{/if}">
+	<div class="input_label">Информация на этикетке</div>
+	<div style="font-size: 11px; margin-top: 10px; margin-bottom: 5px; line-height: 135%;">
+		Введите названия опциональных характеристик в той форме, в которой они будут использоваться в карточке изделия.
+	</div>
+	<div style="display: table; width: 100%; font-size: 11px; margin-top: 5px;">
+		<div style="display: table-cell; width: 50%;">Наименование</div>
+		<div style="display: table-cell; width: 0%; padding-left: 10px;"><div style="width: 32px;"></div></div>
+	</div>
+	<div id="label_edit_options">
+		{section name=i loop=$label.options}
+		<div class="label_edit_option">
+			<div>
+				<input type="text" class="input_primary label_edit_option_title" placeholder="Наименование" value="{$label.options[i].title}" oninput="label.update('common');">
+			</div>
+			<div>
+				<div onclick="label.option_sort(this, 'up');"><i class="icon icon_expand"></i></div>
+				<div onclick="label.option_sort(this, 'down');"><i class="icon icon_expand"></i></div>
+			</div>
+		</div>
+		{/section}
+	</div>
+	<div class="btn_light" onclick="label.option_add();" style="line-height: 30px; height: 32px; margin-top: 20px; user-select: none;"><i class="icon icon_plus" style="font-size: 10px; font-weight: 400; margin-right: 5px;"></i> Добавить</div>
+</div>

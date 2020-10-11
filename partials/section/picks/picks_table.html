@@ -1,0 +1,31 @@
+{if $picks}
+{section name=i loop=$picks}
+<div class="passport_worker_item">
+	<div id="pick_preview_{$picks[i].id}" onclick="pick.expand({$picks[i].id});">
+		<i class="icon icon_ellipsis" onclick="common.menu_popup_toggle(this, event);">
+			<div class="menu_popup" style="width: 160px;">
+				<div onclick="pick.export({$picks[i].id});"><i class="icon icon_export"></i> Экспорт</div>
+				{if $picks[i].status == 0}
+				<div onclick="pick.archive_toggle({$picks[i].id}, 1);"><i class="icon icon_archive_add"></i> Архивировать</div>
+				{elseif $picks[i].status == 1}
+				<div onclick="pick.archive_toggle({$picks[i].id}, 0);"><i class="icon icon_archive_remove"></i> Восстановить</div>
+				{/if}
+			</div>
+		</i>
+		<div class="passport_worker_item_title">Оприходование #{$picks[i].id}</div>
+		<div class="passport_worker_item_info">
+			<div>Производитель: <span>{$picks[i].manufacturers}</span></div>
+			<div>Отсканировано изделий: <span>{$picks[i].count_products} шт.</span></div>
+			<div>Дата операции: <span>{$picks[i].created}</span></div>
+		</div>
+	</div>
+	<div id="pick_details_{$picks[i].id}" class="passport_worker_item_details">
+		<div id="pick_details_wrap_{$picks[i].id}">
+			{include file="./partials/section/picks/picks_products_table.html" products=$picks[i].products}
+		</div>
+	</div>
+</div>
+{/section}
+{else}
+<div style="padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">Нет данных</div>
+{/if}

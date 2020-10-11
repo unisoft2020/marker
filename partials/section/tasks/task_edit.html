@@ -1,0 +1,51 @@
+<div style="padding: 20px; background: #fff; min-height: 200px;">
+	<div style="font-size: 18px; color: #04368f; font-weight: 400;">{if $task.id}Редактировать задание{else}Новое задание{/if}</div>
+	<div style="color: #04368f; padding: 35px 0 10px 0; font-weight: 600;">I. Основные параметры</div>
+	<div style="padding-top: 25px; width: 100%; border-top: 1px solid #ebedec;">
+		<div style="display: table; width: 100%;">
+			<div style="display: table-cell; width: 50%; padding-right: 5px;">
+				<div class="input_label">Название задания</div>
+				<input class="input_primary" id="title" type="text" value="{$task.title}" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+			</div>
+			<div style="display: table-cell; width: 50%; padding-left: 5px;">
+				<div class="input_label">Дата завершения</div>
+				<input class="input_primary" id="date_end" type="text" value="{$task.date_end}" oninput="input_error_hide(this);" placeholder="ДД.ММ.ГГГГ" autocomplete="off" autocorrect="off" autocapitalize="off">
+			</div>
+		</div>
+	</div>
+	<div style="color: #04368f; padding: 35px 0 10px 0; font-weight: 600;">II. Выбор исполнителей</div>
+	<div style="margin-top: 0px; padding-top: 25px; width: 100%; border-top: 1px solid #ebedec;">
+		<div class="btn_primary" onclick="task.user_add_window();">Назначить</div>
+		<div style="color: #04368f; font-size: 12px; font-weight: 600; margin-top: 15px;">Выбранные сотрудники:</div>
+		<div id="selected_users">
+			{if $task.users}
+			{section name=i loop=$task.users}
+			<div id="selected_user_{$task.users[i].id}" class="selected_users_item">
+				{$task.users[i].full_name}<i class="icon icon_delete_3" onclick="task.user_delete({$task.users[i].id});"></i>
+			</div>
+			{/section}
+			{else}
+			<div id="selected_users_blank" class="selected_empty">Сотрудники еще не назначены. Используйте выпадающий список для назначения исполнителей по этому заданию.</div>
+			{/if}
+		</div>
+	</div>
+	<div style="color: #04368f; padding: 35px 0 10px 0; font-weight: 600;">III. Выбор изделий</div>
+	<div style="padding-top: 25px; width: 100%; border-top: 1px solid #ebedec;">
+		<div class="btn_primary" onclick="task.product_add_window();">Добавить</div>	
+		<div style="color: #04368f; font-size: 12px; font-weight: 600; margin-top: 15px;">Выбранные изделия:</div>
+		<div id="selected_products">
+			{if $task.products}
+			{section name=i loop=$task.products}
+			<div id="selected_product_{$task.products[i].id}" class="selected_products_item">
+				{$task.products[i].title}<i class="icon icon_delete_3" onclick="task.product_delete({$task.products[i].id});"></i>
+			</div>
+			{/section}
+			{else}
+			<div id="selected_products_blank" class="selected_empty">Изделия не добавлены. Используйте выпадающий список для назначения изделий этому заданию.</div>
+			{/if}
+		</div>
+	</div>
+	<div style="margin-top: 30px; margin-bottom: 50px;">
+		<div class="btn_primary" onclick="task.save({$task.id});">Сохранить</div>
+	</div>
+</div>

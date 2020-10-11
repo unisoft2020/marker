@@ -1,0 +1,68 @@
+<div style="padding: 20px;">
+<div style="display: table; width: 100%; margin-bottom: 20px;">
+	<div class="home_top_group">
+		<div class="home_top_group_wrap" style="display: table; width: 100%; position: relative;">
+			<div style="display: table-cell; width: 50%; vertical-align: top;">
+				<div class="home_top_title">Статус</div>
+				<div class="home_top_text">Тариф: <span style="font-weight: 600;">Базовый</span></div>
+				<div class="home_top_text">Баланс: <span style="font-weight: 600;">{$company.balance} ₽</span></div>
+				<div class="home_top_text">Занято: <span style="font-weight: 600; color: #8F98A3;">{$company.size_used} Гб</span></div>
+				<div class="home_top_text">Свободно: <span style="font-weight: 600; color: #4ea851;">{$company.size_free} Гб</span></div>
+				<a class="btn_light" href="/bills" style="margin-top: 25px; margin-bottom: 30px;">Подробнее</a>
+				<div style="margin-top: 10px; color: #aaa; font-size: 11px; position: absolute; bottom: 20px; left: 20px;">* указаны данные за все время</div>
+			</div>
+			<div style="display: table-cell; width: 50%; vertical-align: top;">
+				<div id="chart_products" style="min-width: 150px; width: 100%; height: 200px;"></div>
+			</div>
+		</div>
+	</div>
+	<div class="home_top_group">
+		<div class="home_top_group_wrap" style="display: table; width: 100%; position: relative;">
+			<div style="display: table-cell; width: 50%; vertical-align: top;">
+				<div class="home_top_title">Пользователи</div>
+				<div class="home_top_text">Новые: <span style="font-weight: 600; color: #8F98A3;">{$users_count.new}</span></div>
+				<div class="home_top_text">Активные: <span style="font-weight: 600; color: #4ea851;">{$users_count.active}</span></div>
+				<div class="home_top_text">Заблокированы: <span style="font-weight: 600; color: #d10b20;">{$users_count.blocked}</span></div>
+				<div class="home_top_text">Не активные: <span style="font-weight: 600; color: #d36e20;">{$users_count.inactive}</span></div>
+				<a class="btn_light" href="/users" style="margin-top: 25px; margin-bottom: 30px;">Подробнее</a>
+				<div style="margin-top: 10px; color: #aaa; font-size: 11px; position: absolute; bottom: 20px; left: 20px;">* активные - любая активность за последние 7 дней</div>
+			</div>
+			<div style="display: table-cell; width: 50%; vertical-align: top;">
+				<div id="chart_tasks" style="min-width: 150px; width: 100%; height: 200px;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="padding: 20px; border-radius: 5px; background: #fff; min-height: 380px; box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8; position: relative;">
+	<div style="font-size: 16px; color: #04368f;">Активность пользователей</div>
+	<i class="icon icon_excel" onclick="dashboard.stats_export();" style="position: absolute; top: 12px; right: 12px; padding: 10px; font-size: 18px; color: #777; cursor: pointer;"></i>
+	<div style="margin-top: 10px; color: #aaa; font-size: 11px;">* данные за текущую неделю, для просмотра данных за все периоды скачайте отчет в формате Excel.</div>
+	<div class="dashboard_table">
+		<div class="dashboard_table_item header">
+			<div style="width: 25%;">ФИО</div>
+			<div style="width: 10%;">группа</div>
+			<div style="width: 8%; text-align: center;">файлы (мб)</div>
+			<div style="width: 8%; text-align: center;">изделия</div>
+			<div style="width: 8%; text-align: center;">время</div>
+			<div style="width: 8%; text-align: center;">визиты</div>
+			<div style="width: 8%; text-align: center;">просмотры</div>
+			<div style="width: 8%; text-align: center;">логины</div>
+			<div style="width: 17%; text-align: center;">последний визит</div>
+		</div>
+		{section name=i loop=$stats}
+		<div class="dashboard_table_item">
+			<div style="width: 25%;">{$stats[i].name}</div>
+			<div style="width: 10%;">{$stats[i].group}</div>
+			<div style="width: 8%; text-align: center;">{$stats[i].files}{if $stats[i].size != '-'} ({$stats[i].size}){/if}</div>
+			<div style="width: 8%; text-align: center;">{$stats[i].products}</div>
+			<div style="width: 8%; text-align: center;">{$stats[i].time}</div>
+			<div style="width: 8%; text-align: center;">{$stats[i].visits}</div>
+			<div style="width: 8%; text-align: center;">{$stats[i].views}</div>
+			<div style="width: 8%; text-align: center;">{$stats[i].logins}</div>
+			<div style="width: 17%; text-align: center;">{$stats[i].last_active}</div>
+		</div>
+		{/section}
+	</div>
+</div>
+</div>

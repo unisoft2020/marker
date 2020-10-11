@@ -1,0 +1,17 @@
+<div style="color: #04368f; font-size: 12px; font-weight: 600; margin-bottom: 10px;">Загруженные документы</div>
+<div id="group_files_table">
+	{section name=i loop=$files}
+	<div class="group_file_item">
+		<div><i class="icon icon_success group_files_upload{if $files[i].status_id != 1} disabled{/if}"{if $files[i].status_id == 1} onclick="product.group_files_upload_toggle(this, {$files[i].group_file_id}, {$files[i].group_id});"{/if}></i></div>
+		<div>{if $files[i].size}{$files[i].size} Mb{else}-{/if}</div>
+		<div>
+			{if $files[i].status_id == 1}
+			<a href="{$files[i].path}" target="_blank" style="text-decoration: none; display: inline;">{$files[i].title}</a>
+			{else}
+			<span style="color: #C50003;">{$files[i].title}</span>
+			{/if}
+		</div>
+		<div><i class="icon icon_delete_2" onclick="product.group_files_delete({$files[i].group_id}, {$files[i].group_file_id});"></i></div>
+	</div>
+	{/section}
+</div>

@@ -1,0 +1,40 @@
+{if $users}
+{section name=i loop=$users}
+<div class="users_item">
+	<div class="users_item_icons">
+		<i class="icon icon_ellipsis" onclick="common.menu_popup_toggle(this, event);">
+			<div class="menu_popup" style="width: 160px;">
+				<div onclick="user.edit_window({$users[i].user_id});"><i class="icon icon_edit"></i> Редактировать</div>
+				{if $users[i].access == 3}
+				{if $users[i].blocked}
+				<div onclick="user.block({$users[i].user_id}, 0);"><i class="icon icon_block"></i> Разблокировать</div>
+				{else}
+				<div onclick="user.block({$users[i].user_id}, 1);"><i class="icon icon_block"></i> Заблокировать</div>
+				{/if}
+				<div onclick="user.delete_window({$users[i].user_id});"><i class="icon icon_delete_5"></i> Удалить</div>
+				{/if}
+			</div>
+		</i>
+	</div>
+	<div class="users_item_title">{$users[i].full_name}</div>
+	<div class="users_item_info">
+		<div>Доступ: <span>{$users[i].status}</span></div>
+		<div>Телефон: <span>{$users[i].phone}</span></div>
+		<div>Добавлен: <span>{$users[i].created}</span></div>
+		<div>Статус: <span style="{if !$users[i].blocked}color: #109f14; {else}color: #DB0000;{/if}">{if !$users[i].blocked}Активный{else}Заблокирован{/if}</span></div>
+		<div>Email: <span>{$users[i].email}</span></div>
+		{if $users[i].group_id}
+		<div>Группа: <span>{$users[i].group_title}</span></div>
+		{/if}
+		{if $users[i].occupation}
+		<div>Должность: <span>{$users[i].occupation}</span></div>
+		{/if}
+		{if $users[i].note}
+		<div>Примечание: <span>{$users[i].note}</span></div>
+		{/if}
+	</div>
+</div>
+{/section}
+{else}
+<div style="padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">Нет добавленных пользователей</div>
+{/if}

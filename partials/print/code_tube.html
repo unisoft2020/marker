@@ -1,0 +1,51 @@
+<div style="width: 640px; min-height: 280px; padding: 16px 20px; border: 2px solid #000; display: block;">
+
+	<div style="font-weight: 600; font-size: 16px; text-align: center; vertical-align: middle;">{$product.manufacturer.title} тел. +{$product.manufacturer.phone}</div>
+	
+	<div class="code_main" style="margin-top: 8px; display: table; width: 100%;">
+		<div style="display: table-cell; vertical-align: top; width: 70%;">
+			<div style="font-size: 16px; font-weight: 600; word-wrap: break-word; max-width: 600px; line-height: 120%; vertical-align: middle;">{$product.title}{if $custom.certificate}, Сертификат {$custom.certificate}{/if}</div>
+			
+			{if $custom.package || $custom.melt || $custom.tube_number || $custom.length}
+			<div class="code_info" style="margin-top: 8px;">
+				{if $custom.package}
+				<div style="width: 50%;">
+					<div style="text-align: center; padding: 6px 15px; font-size: 16px; font-weight: 600;">Пакет</div>
+					<div style="text-align: center; padding: 6px 15px; font-size: 16px; font-weight: 600;">{$custom.package}</div>
+				</div>
+				{/if}
+				{if $custom.melt}
+				<div style="width: 50%;">
+					<div style="text-align: center; padding: 6px 15px; font-size: 16px; font-weight: 600;">Плавка</div>
+					<div style="text-align: center; padding: 6px 15px; font-size: 16px; font-weight: 600;">{$custom.melt}</div>
+				</div>
+				{/if}
+				{if $custom.tube_number}
+				<div style="width: 50%;">
+					<div style="text-align: center; padding: 6px 15px; font-size: 16px; font-weight: 600;">№ трубы</div>
+					<div style="text-align: center; padding: 6px 15px; font-size: 16px; font-weight: 600;">{$custom.tube_number}</div>
+				</div>
+				{/if}
+				{if $custom.length}
+				<div style="width: 50%;">
+					<div style="text-align: center; padding: 6px 15px; font-size: 16px; font-weight: 600;">Длина</div>
+					<div style="text-align: center; padding: 6px 15px; font-size: 16px; font-weight: 600;">{$custom.length}</div>
+				</div>
+				{/if}
+			</div>
+			{/if}
+			<div style="font-weight: 600; font-size: 15px; padding: 0; margin: 0; margin-top: 10px; line-height: 80%; display: block;">Покрытие: {if $custom.coating}{$custom.coating}{else}не указано{/if}, Дата: {if $custom.coating_date}{$custom.coating_date}{else}не указана{/if}</div>
+			<div style="font-weight: 600; font-size: 15px; padding: 0; margin: 0; margin-top: 10px; line-height: 80%; display: block;">
+				{if $custom.skk}СКК {$custom.skk}{/if}
+				{if $custom.part} партия №{$custom.part}{/if}
+				{if $custom.tu} ТУ {$custom.tu}{/if}
+			</div>
+		</div>
+		
+		<div style="display: table-cell; vertical-align: middle; width: 30%; position: relative;">
+			<img src="{$product.qr}" class="code_qr" style="width: 175px;">
+			<div style="font-weight: 400; font-size: 14px; margin-top: 12px; letter-spacing: 0; text-align: right;">напечатано в marker.team</div>
+		</div>
+	</div>
+	
+</div>

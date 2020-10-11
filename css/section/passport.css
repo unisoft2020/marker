@@ -1,0 +1,84 @@
+/* ------------------------------- COMMON ------------------------------- */
+
+.passport_breadcrumbs {display: table; color: #8A9AAC; font-size: 12px;}
+.passport_breadcrumbs a, .passport_breadcrumbs span {display: table-cell; vertical-align: top; line-height: 14px; text-decoration: none; color: #8A9AAC; text-transform: lowercase; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.passport_breadcrumbs a:hover {color: #5A6C80;}
+.passport_breadcrumbs i {display: table-cell; vertical-align: top; line-height: 16px; font-size: 6px; padding: 0 8px; font-weight: bold;}
+
+/* ------------------------------- PASSPORTS ------------------------------- */
+
+.passports_table {width: 100%; display: inline-block; margin-top: 10px;}
+
+.passport_item {float: left; width: 33.333%;}
+.passport_item > div {width: 100%; height: 140px; border: 1px solid #c7d0d7; border-radius: 3px; margin-bottom: 12px; padding: 15px; font-size: 12px; cursor: pointer; position: relative; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;}
+.passport_item > div:hover {background: #f5f7fa; border-color: #a8afb8;}
+.passport_item.add > div {border-style: dashed;}
+.passport_item:nth-of-type(3n+1) {padding-right: 8px;}
+.passport_item:nth-of-type(3n+2) {padding-left: 4px; padding-right: 4px;}
+.passport_item:nth-of-type(3n) {padding-left: 8px;}
+
+.passport_item_status {color: #04368F; font-weight: 600;}
+.passport_item_status.green {color: #048F12;}
+.passport_item_title {color: #141414; font-weight: 600; padding-top: 10px; line-height: 135%; word-break: break-all; height: 56px; overflow: hidden;}
+.passport_item_produced {color: #8A9AAC; position: absolute; left: 15px; bottom: 35px;}
+.passport_item_sections {color: #8A9AAC; position: absolute; left: 15px; bottom: 15px;}
+
+.passport_item > div > i {position: absolute; padding: 10px; color: #a8afb8; cursor: pointer; text-decoration: none; display: inline; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;}
+.passport_item:hover > div > i {color: #04368f;}
+.passport_item:hover > div > i:hover {color: #1F5ECF;}
+.passport_item .icon_ellipsis {font-size: 17px; top: 2.5px; right: 10px;}
+
+/* ------------------------------- PASSPORTS WORKER ------------------------------- */
+
+.passport_worker_item {user-select: none;}
+.passport_worker_item > div:first-child {width: 100%; border: 1px solid #c7d0d7; border-radius: 3px; margin-bottom: 12px; padding: 15px; font-size: 12px; cursor: pointer; position: relative; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;}
+.passport_worker_item > div:first-child:hover {background: #f5f7fa; border-color: #a8afb8;}
+.passport_worker_item > div:first-child.active {background: #f5f7fa; border-color: #a8afb8;}
+
+.passport_worker_item > div > i {position: absolute; padding: 10px; color: #a8afb8; cursor: pointer; text-decoration: none; display: inline; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;}
+.passport_worker_item:hover > div > i {color: #04368f;}
+.passport_worker_item:hover > div > i:hover {color: #1F5ECF;}
+.passport_worker_item .icon_ellipsis {font-size: 17px; top: 2.5px; right: 10px;}
+
+.passport_worker_item_details {height: 0; overflow: hidden; -webkit-transition: all 0.35s ease-in-out; -o-transition: all 0.35s ease-in-out; transition: all 0.35s ease-in-out;}
+.passport_worker_item_details > div {margin-bottom: 12px;}
+
+.passport_worker_item_title {color: #141414; font-weight: 600; line-height: 135%; word-break: break-all; overflow: hidden;}
+.passport_worker_item_info {display: inline-block; width: 100%; margin-top: 5px; color: #474A4C;}
+.passport_worker_item_info span {color: #686A6C;}
+.passport_worker_item_info > div {float: left; width: 33.333%; margin-top: 5px;}
+
+.passport_worker_sub_title {text-align: center; color: #8A9AAC; font-size: 12px; margin-bottom: 10px;}
+.passport_worker_sub_item {position: relative; border: 1px solid #a8afb8; background: #f5f7fa; color: #6c737d; border-radius: 3px; font-size: 12px; padding: 15px; margin-top: 10px; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;}
+.passport_worker_sub_item:first-child {margin-top: 0;}
+.passport_worker_sub_item > i {position: absolute; top: 0px; right: 4px; padding: 10px; font-size: 20px; cursor: pointer;}
+.passport_worker_sub_item i:hover {color: #3A435B;}
+.passport_worker_sub_item a {color: #5b626c;}
+.passport_worker_sub_item a:hover {color: #39414E;}
+.passport_worker_sub_item.green {border: 1px solid #518f52; background: #6db66f; color: #29512a;}
+.passport_worker_sub_item.green a {color: #29512a;}
+.passport_worker_sub_item.green a:hover {color: #143415;}
+.passport_worker_sub_item.red {border: 1px solid #ae3b28; background: #ff6f4f; color: #532619;}
+.passport_worker_sub_item.red > i {color: #532619;}
+.passport_worker_sub_item.red > i:hover {color: #631B07;}
+.passport_worker_sub_item.red a {color: #532619;}
+.passport_worker_sub_item.red a:hover {color: #631B07;}
+.passport_worker_sub_item.blue {border: 1px solid #8a99ae; background: #cbd3dd; color: #5b626c;}
+.passport_worker_sub_item.blue a {color: #5b626c;}
+.passport_worker_sub_item.blue a:hover {color: #39414E;}
+
+.passport_worker_upload_table {width: 100%; display: table; font-size: 11.5px;}
+.passport_worker_upload_table > div {width: 100%; display: table-row;}
+.passport_worker_upload_table > div > div {display: table-cell; vertical-align: middle; padding: 8px 0; border-bottom: 1px solid #5b626c55;}
+.passport_worker_upload_table > div:last-child > div {border-bottom: 0; padding: 8px 0 0 0;}
+
+/* ------------------------------- PASSPORT DETAILS ------------------------------- */
+
+.passport_sections {margin-top: 15px; display: table; width: 100%; font-size: 12px;}
+.passport_sections > div {display: table-row; width: 100%;}
+.passport_sections > div:hover {background: #f5f7fa; cursor: pointer;}
+.passport_sections > div:first-child:hover {background: #fff; cursor: default;}
+.passport_sections > div > div {display: table-cell; padding: 14px 0; border-bottom: 1px solid #E1E8EF; position: relative;}
+.passport_sections > div:first-child > div {color: #8A9AAC; padding: 10px 0; font-size: 11px;}
+.passport_sections .icon_ellipsis {position: absolute; color: #a8afb8; font-size: 17px; top: 2px; right: 3px; padding: 10px; cursor: pointer; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;}
+.passport_sections .icon_ellipsis:hover {color: #04368f;}

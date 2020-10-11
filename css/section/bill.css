@@ -1,0 +1,12 @@
+/* ------------------------------- BILLS ------------------------------- */
+
+#bills_table {width: 100%; display: table; margin-top: 10px;}
+#bills_table > div {display: table-row; width: 100%;}
+#bills_table > div:hover {background: #f5f7fa; cursor: pointer;}
+#bills_table > div:first-child:hover {background: #fff; cursor: default;}
+#bills_table > div > div {display: table-cell; padding: 14px 0; border-bottom: 1px solid #E1E8EF; position: relative;}
+#bills_table > div > div:first-child, #bills_table > div:first-child > div:first-child {padding-left: 10px;}
+#bills_table > div:first-child > div {color: #8A9AAC; padding: 10px 0; font-size: 11px;}
+
+#bills_table .icon_ellipsis {position: absolute; color: #a8afb8; font-size: 17px; top: 2px; right: 3px; padding: 10px; cursor: pointer; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;}
+#bills_table .icon_ellipsis:hover {color: #04368f;}

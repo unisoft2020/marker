@@ -1,0 +1,18 @@
+<div class="content_wrap">
+	<div class="content_title">Задания</div>
+	<div style="display: table; width: 100%; margin-top: 15px;">
+		<div style="display: table-cell;">
+			<a class="tab_primary{if $show == 'all'} active{/if}" href="/tasks">Все</a>
+			<a class="tab_primary{if $show == 'active'} active{/if}" href="/tasks?show=active">Запланированные</a>
+			<a class="tab_primary{if $show == 'complete'} active{/if}" href="/tasks?show=complete">Выполненные</a>
+		</div>
+		<div style="display: table-cell; text-align: right;">
+			<a class="btn_primary" href="/tasks/new?act=edit" style="line-height: 30px; height: 30px;">Добавить</a>
+		</div>
+	</div>
+	{if $tasks}
+	<div id="tasks_table">{include file="./partials/section/tasks/tasks_table.html"}</div>
+	{else}
+	<div style="margin-top: 15px; padding: 20px; border: 1px solid #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">задания не найдены</div>
+	{/if}
+</div>

@@ -1,0 +1,19 @@
+{section name=i loop=$products}
+<div>
+	<div style="width: 100%;">
+		<div style="font-size: 12px;">
+			<div style="overflow: hidden; white-space: nowrap; max-width: 415px; font-weight: 600; padding-right: 50px; text-overflow: ellipsis;">{$products[i].title}</div>
+			{if $products[i].options}
+			<div style="color: #727375; padding-top: 2px; padding-right: 20px;">
+				{section name=j loop=$products[i].options}
+				{$products[i].options[j].title} <span style="color: #454647;">{$products[i].options[j].value}</span>
+				{/section}
+			</div>
+			{/if}
+		</div>
+	</div>
+	<div style="width: 0%;">
+		<i id="modal_file_product_{$products[i].id}" class="icon icon_success group_files_product{if $products[i].group_file_attached} active{/if}" onclick="product.group_files_product_toggle(this, {$products[i].id}, {$products[i].group_id});"></i>
+	</div>
+</div>
+{/section}

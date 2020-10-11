@@ -1,0 +1,54 @@
+<div class="modal_head">
+	<span>{if !$user.user_id}Добавить{else}Редактировать{/if} пользователя</span>
+	<i class="icon icon_delete" onclick="common.modal_hide();"></i>	
+</div>
+<div style="padding: 20px; border-radius: 0 0 3px 3px; background: #fff;">
+	<div style="padding-top: 0px;">
+		<div class="input_label">Фамилия</div>
+		<input class="input_primary" id="last_name" type="text" value="{$user.last_name}" placeholder="Иванов" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Имя</div>
+		<input class="input_primary" id="first_name" type="text" value="{$user.first_name}" placeholder="Иван" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Отчество</div>
+		<input class="input_primary" id="middle_name" type="text" value="{$user.middle_name}" placeholder="Иванович" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Электронная почта</div>
+		<input class="input_primary" id="email" type="text" value="{$user.email}" placeholder="user@example.com" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Телефон</div>
+		<input class="input_primary" id="phone" type="text" value="{$user.phone}" placeholder="+79000000000" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Должность</div>
+		<input class="input_primary" id="occupation" type="text" value="{$user.occupation}" placeholder="" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Группа</div>
+		<div class="selector" style="position: relative;" onclick="common.results_toggle(this, event);">
+			<input type="text" class="input_primary" placeholder="Название" value="{$user.group_title}" autocomplete="off" autocorrect="off" autocapitalize="off" disabled style="cursor: pointer;">
+			<input type="hidden" id="group_id" value="{$user.group_id}">
+			<i class="icon icon_expand" style="position: absolute; top: 1px; right: 0px; font-size: 17px; cursor: pointer; line-height: 38px; padding: 0 14px;"></i>
+			<div class="results_container">
+				{section name=i loop=$groups}
+				<div class="result_item" onclick="common.result_select(this, '{$groups[i].title}', {$groups[i].id}, 'full');">{$groups[i].title}</div>
+				{/section}
+			</div>
+		</div>
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Пароль</div>
+		<input class="input_primary" id="password" type="text" value="" placeholder="" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Примечание</div>
+		<input class="input_primary" id="note" type="text" value="{$user.note}" placeholder="" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="margin-top: 20px;">
+		<div class="btn_primary" onclick="user.edit_update({$user.user_id});">Сохранить</div>
+	</div>
+</div>

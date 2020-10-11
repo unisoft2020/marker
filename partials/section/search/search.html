@@ -1,0 +1,22 @@
+<div class="content_wrap">
+	<div class="content_title">Поиск</div>
+	<div style="margin-top: 15px;">
+		{if $search}
+			{if $products}
+			<div>Найдено <span style="font-weight: 600;">{$products_count}</span> {$products_label}</div>
+			<div style="margin-top: 20px; display: table; width: 100%;">
+				{include file="./partials/section/products/products_table.html"}
+			</div>
+			{/if}
+			{if !$products}
+			<div style="border: 1px solid #ebedec; border-radius: 3px; padding: 20px 20px; font-size: 12px; letter-spacing: 0;">
+				Ничего не найдено. Попробуйте изменить условия поиска.
+			</div>
+			{/if}
+		{else}
+			<div style="border: 1px solid #ebedec; border-radius: 3px; padding: 20px 20px; font-size: 12px; letter-spacing: 0;">
+				Введите текст для поиска.
+			</div>
+		{/if}
+	</div>
+</div>

@@ -1,0 +1,13 @@
+{if $users}
+{section name=i loop=$users}
+<div class="modal_search_item">
+	<div class="modal_search_info">
+		<div>{$users[i].last_name} {$users[i].first_name}</div>
+		<div class="modal_search_info_sub">{$users[i].occupation}</div>
+	</div>
+	<i id="modal_user_{$users[i].id}" class="icon icon_success modal_search_delete{if $users[i].selected} active{/if}" onclick="task.user_toggle({$users[i].id}, '{$users[i].name}');"></i>
+</div>
+{/section}
+{else}
+<div class="modal_search_blank">Подходящих сотрудников не найдено. Измените условия поиска или добавьте новых пользователей в систему.</div>
+{/if}

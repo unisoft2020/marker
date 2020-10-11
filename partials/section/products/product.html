@@ -1,0 +1,96 @@
+<div style="padding: 20px;">
+<div style="padding: 20px 20px 50px 20px; border-radius: 5px; background: #fff; min-height: 200px; box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;">
+	
+	{if $owner.access != 4}
+	<div style="padding-bottom: 20px;">
+		<a href="{$back_url}" class="btn_gray" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">Назад</a>
+		{if $group.status == 1}
+		<div onclick="product.history({$product.id});" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">История</div>
+		{/if}
+		{if $group.status == 0}
+		{if !$product.user_id || $product.user_id == $owner.user_id}
+		<div onclick="product.edit_window({$product.id}, 'detail');" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">Редактировать</div>
+		{/if}
+		<div onclick="product.copy_window({$product.id}, 'detail');" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;">Дублировать</div>
+		{/if}
+		<div onclick="product.print({$product.id});" class="btn_primary" style="height: 30px; line-height: 30px; width: auto; text-align: center; margin-right: 8px;" target="_blank">Печать</div>
+		<!--<a href="/product?act=download&id={$product.id}" class="btn_primary" style="width: auto; text-align: center;" target="_blank">Скачать</a>-->
+	</div>
+	{/if}
+	<div style="width: 100%; display: table; table-layout: fixed;">
+		<div style="width: 50%; display: table-cell; vertical-align: top; padding-right: 10px;">
+			<div style="width: 100%; min-height: 250px;  border: 1px solid #c7d0d7; border-radius: 3px; padding: 20px; overflow: hidden;">
+				<div style="color: #04368f; font-size: 12px; font-weight: 600; margin-bottom: 10px;">Наименование</div>
+				<div style="font-size: 16px; font-weight: 400; padding-bottom: 10px; border-bottom: 1px solid #ebedec; overflow: hidden; text-overflow: ellipsis;">{$product.title}</div>
+				<div style="color: #04368f; font-size: 12px; font-weight: 600; margin-bottom: 10px; margin-top: 20px;">Изготовитель</div>
+				<div style="font-size: 16px; font-weight: 400; padding-bottom: 10px; border-bottom: 1px solid #ebedec;">{$product.company_title}</div>
+				<div style="color: #04368f; font-size: 12px; font-weight: 600; margin-bottom: 10px; margin-top: 20px;">Дата изготовления</div>
+				<div style="font-size: 16px; font-weight: 400; padding-bottom: 10px; border-bottom: 1px solid #ebedec;">{$product.produced}</div>
+			</div>
+		</div>
+		<div style="width: 50%; display: table-cell; vertical-align: top; padding-left: 10px;">
+			<div style="background: #eee; border: 1px solid #c7d0d7; border-radius: 3px; overflow: hidden; height: 250px; width: 100%; position: relative;">
+				<div id="label_preview" style="position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform: scale(0.3); margin-left: {$label.preview_left}px; margin-top: {$label.preview_top}px;">
+					{$label_preview}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	{if $product.options}
+	<div style="width: 100%; border: 1px solid #c7d0d7; border-radius: 3px; padding: 20px; margin-top: 20px;">
+		<div style="color: #04368f; font-size: 12px; font-weight: 600; margin-bottom: 10px; margin-top: 0px;">Характеристики изделия</div>
+		<div class="product_options_table">
+			<div class="product_options_column">
+				{section name=i loop=$product.options}
+				{if $ref.section.i.index % 2 == 0}
+				<div class="product_options_item">
+					<div class="product_options_title">{$product.options[i].title}{if $product.options[i].units_title}, {$product.options[i].units_title}{/if}</div>
+					<div class="product_options_value">{$product.options[i].value}</div>
+				</div>
+				{/if}
+				{/section}
+			</div>
+			<div class="product_options_column">
+				{section name=i loop=$product.options}
+				{if ($ref.section.i.index + 1) % 2 == 0}
+				<div class="product_options_item">
+					<div class="product_options_title">{$product.options[i].title}{if $product.options[i].units_title}, {$product.options[i].units_title}{/if}</div>
+					<div class="product_options_value">{$product.options[i].value}</div>
+				</div>
+				{/if}
+				{/section}
+			</div>
+		</div>
+	</div>
+	{/if}
+	
+	{if $product.files}
+	<div style="width: 100%; border: 1px solid #c7d0d7; border-radius: 3px; padding: 20px; margin-top: 20px;">
+		<div style="color: #04368f; font-size: 12px; font-weight: 600; margin-bottom: 10px;">Сопроводительная документация</div>
+		<div style="margin-top: 5px; display: inline-block; width: 100%;">
+			{section name=i loop=$product.files}
+			<div class="product_file_item">
+				{if $product.files[i].type == 1}
+				<i class="icon icon_pdf"></i>
+				{elseif $product.files[i].type == 2}
+				<i class="icon icon_word"></i>
+				{elseif $product.files[i].type == 3}
+				<i class="icon icon_excel"></i>
+				{elseif $product.files[i].type == 4}
+				<i class="icon icon_txt"></i>
+				{elseif $product.files[i].type == 5}
+				<i class="icon icon_jpg"></i>
+				{elseif $product.files[i].type == 6}
+				<i class="icon icon_png"></i>
+				{/if}
+				<a href="{$product.files[i].path}" target="_blank">{$product.files[i].title}</a>
+				<span>{$product.files[i].size} Mb</span>
+			</div>
+			{/section}
+		</div>
+	</div>
+	{/if}
+
+</div>
+</div>

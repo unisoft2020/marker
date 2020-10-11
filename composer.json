@@ -1,0 +1,12 @@
+{
+    "name": "hp/marker",
+    "authors": [
+        {
+            "name": "webmediaart",
+            "email": "webmediaart@yandex.ru"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.13"
+    }
+}

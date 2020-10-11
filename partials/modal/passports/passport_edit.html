@@ -1,0 +1,39 @@
+<div class="modal_head">
+	<span>{if !$passport.id}Добавить{else}Редактировать{/if} паспорт</span>
+	<i class="icon icon_delete" onclick="common.modal_hide();"></i>	
+</div>
+<div style="padding: 20px; border-radius: 0 0 3px 3px; background: #fff;">
+	<div style="padding-top: 0px;">
+		<div class="input_label">Наименование изделия</div>
+		<input class="input_primary" id="title" type="text" value="{$passport.title}" placeholder="" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Номер заказа</div>
+		<input class="input_primary" id="order_number" type="text" value="{$passport.order_number}" placeholder="" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Заводской номер</div>
+		<input class="input_primary" id="number" type="text" value="{$passport.number}" placeholder="" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Форма паспорта изделия</div>
+		<div class="selector" style="position: relative;" onclick="common.results_toggle(this, event);">
+			<input type="text" class="input_primary" placeholder="Наименование" value="{$passport.type_title}" autocomplete="off" autocorrect="off" autocapitalize="off" disabled style="cursor: pointer;">
+			<input type="hidden" id="type_id" value="{$passport.type_id}">
+			<i class="icon icon_expand" style="position: absolute; top: 1px; right: 0px; font-size: 17px; cursor: pointer; line-height: 38px; padding: 0 14px;"></i>
+			<div class="results_container">
+				{section name=i loop=$types}
+				<div class="result_item" onclick="common.result_select(this, '{$types[i].title}', {$types[i].id}, 'full');">{$types[i].title}</div>
+				{/section}
+			</div>
+		</div>
+	</div>
+	<div style="padding-top: 15px; position: relative;">
+		<div class="input_label">Дата изготовления</div>
+		<i class="icon icon_calendar_2" style="position: absolute; bottom: 10px; right: 11px; font-size: 16px; color: #c9cbcf;"></i>
+		<input class="input_primary" id="produced" type="text" value="{$passport.produced}" placeholder="ДД.ММ.ГГГГ" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="margin-top: 20px;">
+		<div class="btn_primary" onclick="passport.edit_update({$passport.id});">Сохранить</div>
+	</div>
+</div>

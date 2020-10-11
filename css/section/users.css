@@ -1,0 +1,16 @@
+/* ------------------------------- USERS ------------------------------- */
+
+#users_table {width: 100%; display: inline-block; margin-top: 10px;}
+
+.users_item {width: 100%; position: relative; border: 1px solid #c7d0d7; border-radius: 3px; margin-bottom: 12px; padding: 15px; font-size: 12px; user-select: none; cursor: pointer; position: relative; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;}
+.users_item:hover {background: #f5f7fa; border-color: #a8afb8;}
+
+.users_item_title {color: #141414; font-weight: 600; line-height: 135%; word-break: break-all; overflow: hidden;}
+.users_item_info {display: inline-block; width: 100%; margin-top: 5px; color: #474A4C;}
+.users_item_info span {color: #686A6C;}
+.users_item_info > div {float: left; width: 33.333%; margin-top: 5px;}
+
+.users_item_icons > i {position: absolute; padding: 10px; color: #a8afb8; cursor: pointer; text-decoration: none; display: inline; -webkit-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;}
+.users_item:hover .users_item_icons > i {color: #04368f;}
+.users_item:hover .users_item_icons > i:hover {color: #1F5ECF;}
+.users_item_icons > .icon_ellipsis {font-size: 17px; top: 2.5px; right: 10px;}

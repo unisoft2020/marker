@@ -1,0 +1,35 @@
+{if $files}
+<div>
+	<div style="width: 5%;"></div>
+	<div style="width: 45%;">Название</div>
+	<div style="width: 25%;">Кто загрузил</div>
+	<div style="width: 10%;">Отдел</div>
+	<div style="width: 15%;">Загружено</div>
+	<div style="width: 0%;"></div>
+</div>
+{section name=i loop=$files}
+<div onclick="passport.file_open('{$files[i].path}');">
+	<div style="text-align: center;">{$files[i].number}</div>
+	<div>
+		<div style="color: #04368F; font-weight: 600; max-width: 350px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" title="{$files[i].title}">{$files[i].title}</div>
+		<div style="margin-top: 5px;">{$files[i].type} ({$files[i].size} Mb)</div>
+	</div>
+	<div>
+		<div style="color: #04368F; font-weight: 600; max-width: 200px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" title="{$files[i].owner_name}">{$files[i].owner_name}{if $files[i].owner_occupation} ({$files[i].owner_occupation}){/if}</div>
+		<div style="margin-top: 5px;"> {$files[i].owner_email}, тел.: {$files[i].owner_phone}</div>
+	</div>
+	<div>{$files[i].owner_groups}</div>
+	<div>{$files[i].created}</div>
+	<div>
+		<i class="icon icon_ellipsis" onclick="common.menu_popup_toggle(this, event);">
+			<div class="menu_popup" style="width: 185px;">
+				<div onclick="passport.file_edit_window({$files[i].id}, 'sub');"><i class="icon icon_edit"></i> Редактировать</div>
+				<div onclick="passport.file_delete({$files[i].id}, 'sub');"><i class="icon icon_delete_5"></i> Удалить</div>
+			</div>
+		</i>
+	</div>
+</div>
+{/section}
+{else}
+<div style="display: table-cell; margin-top: 15px; padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">В этот раздел цифрового паспорта еще не загружены файлы.</div>
+{/if}

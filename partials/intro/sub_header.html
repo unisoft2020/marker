@@ -1,0 +1,137 @@
+<div class="home home_index">
+	
+	<div class="mobile_menu" id="mobile-menu">
+		<div class="mobile_menu_wrap">
+			<a onclick="intro.change_page('home');" class="mobile_menu_item{if $section == 'home'} active{/if}"{if !$async} style="animation-delay: 0.3s;"{/if}><span>Главная</span></a>
+			<a onclick="intro.change_page('marker');" class="mobile_menu_item{if $section == 'marker'} active{/if}"{if !$async} style="animation-delay: 0.4s;"{/if}><span>Маркер</span></a>
+			<a onclick="intro.change_page('scaner');" class="mobile_menu_item{if $section == 'scaner'} active{/if}"{if !$async} style="animation-delay: 0.5s;"{/if}><span>Сканер</span></a>
+			<a onclick="intro.change_page('help');" class="mobile_menu_item{if $section == 'help'} active{/if}"{if !$async} style="animation-delay: 0.6s;"{/if}><span>Помощь</span></a>
+		</div>
+	</div>
+
+	<div class="header" id="header">
+		<div class="header_wrap">
+			<a onclick="intro.change_page('home');" class="logo{if !$async} fade_in_left{/if}"{if !$async} style="animation-delay: 0.2s;"{/if}>
+				{if $section == 'marker'}
+				<img class="logo_main" src="/images/intro/logo_marker.svg">
+				{elseif $section == 'scaner'}
+				<img class="logo_main" src="/images/intro/logo_scaner.svg">
+				{else}
+				<img class="logo_main" src="/images/intro/logo_main.svg">
+				{/if}
+				<img class="logo_mobile" src="/images/intro/logo_main.svg">
+			</a>
+			<div class="menu">
+				<a onclick="intro.change_page('home');" class="menu_item{if !$async} fade_in_left{/if}{if $section == 'home'} active{/if}"{if !$async} style="animation-delay: 0.3s;"{/if}>Главная</a>
+				<a onclick="intro.change_page('marker');" class="menu_item{if !$async} fade_in_left{/if}{if $section == 'marker'} active{/if}"{if !$async} style="animation-delay: 0.3s;"{/if}>Маркер</a>
+				<a onclick="intro.change_page('scaner');" class="menu_item{if !$async} fade_in_left{/if}{if $section == 'scaner'} active{/if}"{if !$async} style="animation-delay: 0.3s;"{/if}>Сканер</a>
+				<a onclick="intro.change_page('help');" class="menu_item{if !$async} fade_in_left{/if}{if $section == 'help'} active{/if}"{if !$async} style="animation-delay: 0.3s;"{/if}>Помощь</a>
+			</div>
+			<div class="auth auth_index{if !$async} fade_in_left{/if}"{if !$async} style="animation-delay: 0.3s;"{/if}><a href="/login">Вход</a></div>
+			<div class="burger{if !$async} fade_in_left{/if}"{if !$async} style="animation-delay: 0.3s;"{/if} onclick="intro.toggle_menu();">
+				<div class="burger_item" id="burger"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="home_block{if $section == 'marker'} home_block_marker{elseif $section == 'scaner'} home_block_scaner{/if}" style="overflow: hidden;">
+		{if $section == 'marker'}
+		<div class="home_desc fade_in_left" style="animation-delay: 1.8s; z-index: 100; height: 122px;">Веб-сервис</div>
+		{elseif $section == 'scaner'}
+		<div class="home_mobile fade_in_left" style="animation-delay: 1.8s; z-index: 100; height: 122px;"><div>Доступно на ОС Android</div>Мобильное приложение</div>
+		{/if}
+	</div>
+	
+	<div class="home_info home_info_index" style="overflow: hidden;">
+		{if $section == 'marker'}
+		<div class="home_title fade_in_up" style="animation-delay: 1.0s;">Маркировать продукцию</div>
+		<div class="home_title fade_in_up" style="animation-delay: 1.2s;">просто</div>
+		{elseif $section == 'scaner'}
+		<div class="home_title fade_in_up" style="animation-delay: 1.0s;">Сканировать продукцию</div>
+		<div class="home_title fade_in_up" style="animation-delay: 1.2s;">стало быстрее</div>
+		{elseif $section == 'help'}
+		<div class="home_title fade_in_up" style="animation-delay: 1.0s;">Остались вопросы?</div>
+		<div class="home_informer fade_in_left" style="animation-delay: 1.2s;">Попробуйте найти ответ в нашем списке распространенных вопросов</div>
+		{else}
+		<div class="home_title fade_in_up" style="animation-delay: 1.0s;">Платформа промышленной</div>
+		<div class="home_title fade_in_up" style="animation-delay: 1.2s;">маркировки №1</div>
+		<div class="home_links fade_in_left" style="animation-delay: 1.3s;">
+			<a onclick="intro.change_page('marker');" class="home_link">
+				<span>Я поставляю<br>продукцию</span>
+				<div class="home_link_btn"><i class="home_link_icon icon_arrow_right"></i></div>
+			</a>
+			<div class="home_links_border"></div>
+			<a onclick="intro.change_page('scaner');" class="home_link">
+				<span>Я заказываю<br>продукцию</span>
+				<div class="home_link_btn"><i class="home_link_icon icon_arrow_right"></i></div>
+			</a>
+		</div>
+		{/if}
+	</div>
+	
+	{if $section == 'marker'}
+	<div class="home_banner home_banner_marker fade_in_up" style="animation-delay: 1.0s;">
+		<div class="home_banner_wrap">
+			<div class="home_banner_item fade_in_up" style="animation-delay: 1.2s;">
+				<div class="home_banner_title">Хотите знать<br>как это работает?</div>
+				<div class="home_banner_desc">Все о взаимодействие с продуктом</div>
+			</div>
+		</div>
+	</div>
+	{elseif $section == 'scaner'}
+	<div class="home_banner home_banner_marker fade_in_up" style="animation-delay: 1.0s;">
+		<div class="home_banner_wrap">
+			<div class="home_banner_item fade_in_up" style="animation-delay: 1.2s;">
+				<div class="home_banner_title">Хотите знать<br>как это работает?</div>
+				<div class="home_banner_desc">Все о взаимодействие с продуктом</div>
+			</div>
+		</div>
+	</div>
+	{elseif $section == 'help'}
+	<div class="home_banner home_banner_marker fade_in_up" style="animation-delay: 1.0s;">
+		<div class="home_banner_wrap">
+			<div class="home_banner_item fade_in_up" style="animation-delay: 1.2s;">
+				<div class="home_banner_title">Не нашли ответ на вопрос?</div>
+				<div class="home_banner_desc">Напишите нам в поддержку и мы поможем вам</div>
+			</div>
+		</div>
+	</div>
+	{else}
+	<div class="home_banner home_banner_index fade_in_up" style="animation-delay: 1.0s;">
+		<div class="home_banner_wrap">
+			<div class="home_banner_item fade_in_up" style="animation-delay: 1.2s;">
+				<div class="home_banner_title">Удобно</div>
+				<div class="home_banner_desc">Быстро и просто оптимизируйте ресурсы организации на проведение складских операций</div>
+			</div>
+			<div class="home_banner_item fade_in_up" style="animation-delay: 1.3s;">
+				<div class="home_banner_title">Выгодно</div>
+				<div class="home_banner_desc">Переходите с дорогостоящего сканирующего оборудования на привычные смартфоны</div>
+			</div>
+			<div class="home_banner_item fade_in_up" style="animation-delay: 1.4s;">
+				<div class="home_banner_title">Безопасно</div>
+				<div class="home_banner_desc">Будьте уверены в безопасности ваших данных, работая в сервисе, которому доверяют</div>
+			</div>
+		</div>
+	</div>
+	{/if}
+
+	<div class="home_overlay"></div>
+	<div class="home_video">
+		<video playsinline autoplay muted loop>
+			{if $section == 'scaner'}
+			<source src="/video/intro_3.mp4" type="video/mp4">
+			<source src="/video/intro_3.ogv" type="video/ogg">
+			<source src="/video/intro_3.webm" type="video/webm">
+			{elseif $section == 'marker'}
+			<source src="/video/intro_2.mp4" type="video/mp4">
+			<source src="/video/intro_2.ogv" type="video/ogg">
+			<source src="/video/intro_2.webm" type="video/webm">
+			{else}
+			<source src="/video/intro_1.mp4" type="video/mp4">
+			<source src="/video/intro_1.ogv" type="video/ogg">
+			<source src="/video/intro_1.webm" type="video/webm">
+			{/if}
+		</video>        
+	</div>
+		
+</div>

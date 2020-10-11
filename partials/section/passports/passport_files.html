@@ -1,0 +1,16 @@
+<div style="padding: 20px 20px 50px 20px; background: #fff; min-height: 200px; padding-bottom: 170px;">
+	
+	<div class="passport_breadcrumbs">
+		<a href="/passports">все записи</a>
+		<i class="icon icon_next"></i>
+		<a href="/passports/{$passport.id}">{$passport.title}</a>
+		<i class="icon icon_next"></i>
+		<span>файлы</span>
+	</div>
+	
+	<div style="font-size: 18px; color: #04368f; margin-top: 10px;">{$passport.title}</div>
+	
+	<div style="font-size: 14px; font-weight: 600; margin-top: 20px;">Список загруженных файлов</div>
+	<div class="passport_sections" id="passport_files">{include file="./partials/section/passports/passport_files_table.html"}</div>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="modal_head">
+	<span>История сканирований</span>
+	<i class="icon icon_delete" onclick="common.modal_hide();"></i>	
+</div>
+<div style="padding: 10px 20px; border-radius: 0 0 3px 3px; background: #fff;">
+	{if $info}
+	<div class="product_history_table">
+		{section name=i loop=$info}
+		<div>
+			<div style="width: 25%;">
+				<div style="font-size: 12px;">{$info[i].created_date}</div>
+				<div style="font-size: 12px; color: #7C8591; margin-top: 5px;">в {$info[i].created_time}</div>
+			</div>
+			<div style="width: 50%;">
+				{if $info[i].user_title}
+				<div style="font-size: 12px;">{$info[i].user_title}</div>
+				<div style="color: #7C8591; margin-top: 5px; font-size: 12px;">{$info[i].company_title}</div>
+				{else}
+				<div style="font-size: 12px;">не авторизован</div>
+				{/if}
+			</div>
+			<div style="width: 15%;">
+				<i class="icon product_history_source {if !$info[i].source}icon_android{else}icon_web{/if}" title="{if !$info[i].source}Android{else}Website{/if}"></i>
+			</div>
+			<div style="width: 10%; text-align: right;">
+				<a class="icon icon_map{if $info[i].lat != 0 && $info[i].lng != 0} active{/if}" {if $info[i].lat != 0 && $info[i].lng != 0} href="https://www.google.com/maps?q=loc:{$info[i].lat},{$info[i].lng}"{/if} target="_blank"></a>
+			</div>
+		</div>
+		{/section}
+	</div>
+	{else}
+	<div class="product_history_blank"><span>История сканирования по выбранному изделию отсутствует, попробуйте выполнить сканирование через приложение и зайти повторно.</span></div>
+	{/if}
+</div>

@@ -1,0 +1,42 @@
+<div class="modal_head">
+	<span>{if !$group.id}Добавить{else}Редактировать{/if} партию</span>
+	<i class="icon icon_delete" onclick="common.modal_hide();"></i>	
+</div>
+<div style="padding: 20px; border-radius: 0 0 3px 3px; background: #fff;">
+	<div style="padding-top: 0px;">
+		<div class="input_label">Название партии</div>
+		<input class="input_primary" id="title" type="text" value="{$group.title}" placeholder="Название" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Заказчик</div>
+		<div style="width: 100%; position: relative;">
+			<input type="text" id="customer_title" class="input_primary" placeholder="Наименование" value="{$group.customer.title}" oninput="product.search_customer(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+			<input type="hidden" id="customer_id" value="{$group.customer.id}">
+			<div class="results_container"></div>
+		</div>
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Договор</div>
+		<div style="width: 100%; position: relative;">
+			<input type="text" id="contract_title" class="input_primary" placeholder="Наименование" value="{if $group.contract.title}{$group.contract.title} прил. {$group.contract.annex_number}{/if}" oninput="product.search_contract(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+			<input type="hidden" id="contract_id" value="{$group.contract.id}">
+			<div class="results_container"></div>
+		</div>
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Этикетка</div>
+		<div class="selector" style="position: relative;" onclick="common.results_toggle(this, event);">
+			<input type="text" class="input_primary" placeholder="Название этикетки" value="{$group.label_title}" autocomplete="off" autocorrect="off" autocapitalize="off" disabled style="cursor: pointer;">
+			<input type="hidden" id="label_id" value="{$group.label_id}">
+			<i class="icon icon_expand" style="position: absolute; top: 1px; right: 0px; font-size: 17px; cursor: pointer; line-height: 38px; padding: 0 14px;"></i>
+			<div class="results_container">
+				{section name=i loop=$labels}
+				<div class="result_item" onclick="common.result_select(this, '{$labels[i].title}', {$labels[i].id}, 'full');">{$labels[i].title}</div>
+				{/section}
+			</div>
+		</div>
+	</div>
+	<div style="margin-top: 20px;">
+		<div class="btn_primary" onclick="product.group_edit_update({$group.id});">Сохранить</div>
+	</div>
+</div>

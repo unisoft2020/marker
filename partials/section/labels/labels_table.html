@@ -1,0 +1,20 @@
+{if $labels}
+{section name=i loop=$labels}
+<div id="product_{$labels[i].id}" class="product_item" style="display: table; width: 100%; cursor: default;">
+	<div style="display: table-cell; vertical-align: top; width: 50%;">
+		<div class="product_item_title" style="margin-bottom: 15px;">{$labels[i].title}</div>
+		<div class="btn_primary" onclick="label.edit({$labels[i].id});" style="line-height: 30px; height: 30px;">Редактировать</div>
+		<div class="btn_primary" onclick="label.delete({$labels[i].id});" style="line-height: 30px; height: 30px; margin-left: 8px;">Удалить</div>
+	</div>
+	<div style="display: table-cell; vertical-align: top; width: 50%;">
+		<div style="background: #eee; border-radius: 3px; overflow: hidden; margin: 0 0 0 auto; height: {$labels[i].preview_height}px; width: {$labels[i].preview_width}px; position: relative;">
+			<div id="label_preview" style="position: absolute; left: 0; width: 0; height: 0; top: 0; transform: scale(0.3);">
+				{$labels[i].preview}
+			</div>
+		</div>
+	</div>
+</div>
+{/section}
+{else}
+<div style="margin-top: 15px; padding: 20px; border: 1px solid #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">этикетки не найдены</div>
+{/if}

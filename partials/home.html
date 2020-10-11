@@ -1,0 +1,85 @@
+<div id="modal"><div id="modal_container"><div id="modal_overlay"><div class="dn" id="modal_close" onclick="common.modal_hide();"><i class="icon icon_delete"></i></div><div id="modal_content"></div></div></div></div>
+<div id="notifications_popup" class="notifications_popup">{include file="./partials/section/notifications/notifications_popup.html"}</div>
+<div id="scroll_fix">
+<div id="content"{if $global.menu == 0} class="short"{/if}>
+		<div id="top_menu">
+			<div id="top_menu_left">
+				<i class="icon icon_burger top_menu_burger" onclick="common.menu_toggle();"></i>
+				<a class="top_menu_logo" href="/">маркер</a>
+				<div style="width: 100%; height: 36px; margin-top: 6px; border-right: 1px solid #e2e6e7;"></div>
+			</div>
+			<div id="top_menu_main">
+				{if $owner.access == 3 && !$owner.company.show_passports}
+				<i class="icon icon_search" style="position: absolute; left: 20px; top: 16px; font-size: 16px; color: #04368f;"></i>
+				<input id="search" type="text" placeholder="Поиск" value="{$search}" oninput="common.search();" style="width: 100%; height: 49px; border: 0; padding: 0 20px 0 50px; line-height: 50px;" autocomplete="off" autocorrect="off" autocapitalize="off">
+				{/if}
+			</div>
+			<div id="top_menu_right">
+				<a href="/logout" class="top_menu_item" style="right: 0px; text-decoration: none;"><i class="icon icon_logout" style="font-size: 18px; color: #04368f; top: 48%;"></i></a>
+				<div id="notification_button">{include file="./partials/section/notifications/notifications_button.html"}</div>
+				<div id="owner_name" style="font-size: 13px; margin-top: 10px; font-weight: 600; text-transform: uppercase; color: #04368f; letter-spacing: 0;">{$owner.full_name}</div>
+				<div style="font-size: 11px; margin-top: 2px; font-weight: 600; text-transform: uppercase;">{$owner.company_title}</div>
+			</div>
+		</div>
+		<div id="menu">
+			{if $owner.access == 2}
+			<a class="menu_item{if $global.path == 'dashboard'} select{/if}" href="/">
+				<i class="icon icon_dashboard" style="font-size: 20px;"></i><span>Главная</span>
+			</a>
+			{/if}
+			{if $owner.access == 2}
+			<a class="menu_item{if $global.path == 'users'} select{/if}" href="/users">
+				<i class="icon icon_users" style="font-size: 20px;"></i><span>Пользователи</span>
+			</a>
+			{/if}
+			{if $owner.access == 2}
+			<a class="menu_item{if $global.path == 'bills'} select{/if}" href="/bills">
+				<i class="icon icon_bills" style="font-size: 20px;"></i><span>Счета</span>
+			</a>
+			{/if}
+			{if $owner.access == 3 && $owner.company.show_products}
+			<a class="menu_item{if $global.path == 'products' || ($global.path == 'home' && !$owner.company.show_home)} select{/if}" href="/products">
+				<i class="icon icon_products" style="font-size: 20px;"></i><span>Изделия</span>
+			</a>
+			{/if}
+			{if $owner.access == 3 && $owner.company.show_passports}
+			<a class="menu_item{if $global.path == 'passports'} select{/if}" href="/passports">
+				<i class="icon icon_passports" style="font-size: 20px;"></i><span>Паспорта</span>
+			</a>
+			{/if}
+			{if $owner.access == 4}
+			<a class="menu_item{if $global.path == 'scans'} select{/if}" href="/scans">
+				<i class="icon icon_scans" style="font-size: 20px;"></i><span>Сканирование</span>
+			</a>
+			{/if}
+			{if $owner.access == 4}
+			<a class="menu_item{if $global.path == 'picks'} select{/if}" href="/picks">
+				<i class="icon icon_products" style="font-size: 20px;"></i><span>Оприходование</span>
+			</a>
+			{/if}
+			<!--{if $owner.company.show_tasks}
+			<a class="menu_item{if $global.path == 'tasks'} select{/if}" href="/tasks">
+				<i class="icon icon_tasks" style="font-size: 20px;"></i><span>Задания</span>
+			</a>
+			{/if}-->
+			{if $owner.access == 3 && $owner.company.show_products}
+			<a class="menu_item{if $global.path == 'labels'} select{/if}" href="/labels">
+				<i class="icon icon_qr" style="font-size: 20px;"></i><span>Этикетки</span>
+			</a>
+			{/if}
+			<div style="width: 100%; padding-top: 10px; margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.3);">
+				<a class="menu_item{if $global.path == 'settings'} select{/if}" href="/settings">
+					<i class="icon icon_settings" style="font-size: 20px;"></i><span>Настройки</span>
+				</a>
+				<a class="menu_item{if $global.path == 'support'} select{/if}" href="/support">
+					<i class="icon icon_support" style="font-size: 20px;"></i><span>Задать вопрос</span>
+				</a>
+			</div>
+		</div>
+		<div id="main_content_wrap">
+			<div id="main_content">
+				{include file="$main_content"}
+			</div>
+		</div>
+	</div>
+</div>

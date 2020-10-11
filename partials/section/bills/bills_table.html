@@ -1,0 +1,30 @@
+{if $bills}
+<div>
+	<div style="width: 20%;">Номер счета</div>
+	<div style="width: 18%;">Сумма</div>
+	<div style="width: 17%;">Статус</div>
+	<div style="width: 15%;">PDF</div>
+	<div style="width: 15%;">Выставлен</div>
+	<div style="width: 15%;">Оплачен</div>
+	<div style="width: 0%;"></div>
+</div>
+{section name=i loop=$bills}
+<div onclick="">
+	<div>{$bills[i].number}</div>
+	<div>{$bills[i].amount} ₽</div>
+	<div>{$bills[i].status}</div>
+	<div><a href="/bills?act=download&id={$bills[i].id}" target="_blank">скачать</a></div>
+	<div>{$bills[i].created}</div>
+	<div>{$bills[i].paid}</div>
+	<div>
+		<i class="icon icon_ellipsis" onclick="common.menu_popup_toggle(this, event);">
+			<div class="menu_popup" style="width: 185px;">
+				<div onclick="bill.delete({$bills[i].id});"><i class="icon icon_delete_5"></i> Удалить</div>
+			</div>
+		</i>
+	</div>
+</div>
+{/section}
+{else}
+<div style="display: table-cell; width: 100%; margin-top: 15px; padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">Счета не найдены.</div>
+{/if}

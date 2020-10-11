@@ -1,0 +1,7 @@
+{if $contracts}
+{section name=i loop=$contracts}
+<div class="result_item" onclick="product.search_contract_select({$contracts[i].id}, '{$contracts[i].title} прил. {$contracts[i].annex_number}');">{$contracts[i].title} прил. {$contracts[i].annex_number}</div>
+{/section}
+{else}
+<div class="result_item">Ничего не найдено ...</div>
+{/if}

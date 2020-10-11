@@ -1,0 +1,14 @@
+{if $scans}
+{section name=i loop=$scans}
+<div class="scans_item" onclick="scan.show_product({$scans[i].product_id});">
+	<div class="scans_item_title">{$scans[i].product_title}</div>
+	<div class="scans_item_info">
+		<div>Производитель: <span>{$scans[i].manufacturer}</span></div>
+		<div>Пользователь: <span>{$scans[i].user_name}</span></div>
+		<div>Дата операции: <span>{$scans[i].created}</span></div>
+	</div>
+</div>
+{/section}
+{else}
+<div style="padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">Нет данных</div>
+{/if}

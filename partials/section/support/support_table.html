@@ -1,0 +1,18 @@
+{if $support}
+{section name=i loop=$support}
+<div class="group_item droppable unselectable" onclick="support.ticket_details({$support[i].id});">
+	<div class="group_item_title" style="width: 85%; word-break: break-all;">№ {$support[i].id} — {$support[i].title}</div>
+	<div class="group_item_options">
+		<div>{$support[i].snippet}</div>
+		{if $support[i].updated == 0}
+		<div>Создан: <span>{$support[i].created}</span></div>
+		{else}
+		<div>Обновлен: <span>{$support[i].updated}</span></div>
+		{/if}
+	</div>
+	<span style="position: absolute; top: 14px; right: 12px;" class="product_item_status {if $support[i].status != 'Закрыт'}complete{else}wait{/if}" {if $support[i].status != 'Закрыт'}onclick="support.close_ticket({$support[i].id}, 'support', event);"{/if}>{$support[i].status}</span>
+</div>
+{/section}
+{else}
+<div style="width: 100%; margin-top: 15px; padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a; text-align: center;">Обращения в службу поддержки не найдены.</div>
+{/if}

@@ -1,0 +1,32 @@
+<div style="background: #fff; padding: 20px; display: inline-block; user-select: none; width: {$label.preview_width}px; height: {$label.preview_height}px;">
+	<div class="code_wrap" style="border-radius: 16px; overflow: hidden; width: 100%; height: 100%;">
+		<div class="code_manufacturer">{$label.company_title}</div>
+		<div class="code_main" style="margin-top: 10px;">
+			<div class="code_main_left" style="width: 100%;">
+				<div style="font-size: 22px; font-weight: 600; word-wrap: break-word; margin-bottom: 10px; line-height: 105%;">
+					{$label.product_title}, {$label.options[0].title_print} {$label.options[0].value}
+				</div>
+				<div class="code_info">
+					{section name=i loop=$label.options}
+					{if $label.options[i].title && $ref.section.i.index >= 1 && $ref.section.i.index < 5}
+					<div>
+						<div style="width: 50%; line-height: {$label.preview_row}px;">{$label.options[i].title_print}</div>
+						<div style="width: 50%; line-height: {$label.preview_row}px;">{$label.options[i].value}</div>
+					</div>
+					{/if}
+					{/section}
+				</div>
+			</div>
+			<div class="code_main_right" style="width: 0%; min-width: {$label.preview_code}px;">
+				<img src="{$label.qr}" class="code_qr">
+			</div>
+		</div>
+		<div style="font-size: 20px; line-height: 110%; margin-top: 10px; font-weight: 600;">
+			{section name=i loop=$label.options}
+			{if $label.options[i].title && $label.options[i].value && $ref.section.i.index >= 5}
+				{$label.options[i].title_print} {$label.options[i].value}{if $ref.section.i.index != $ref.section.i.max - 1}, {/if}
+			{/if}
+			{/section}
+		</div>
+	</div>
+</div>

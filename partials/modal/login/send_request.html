@@ -1,0 +1,25 @@
+<div class="modal_head">
+	<span>Запрос доступа</span>
+	<i class="icon icon_delete" onclick="common.modal_hide();"></i>	
+</div>
+<div style="padding: 20px; border-radius: 0 0 3px 3px; background: #fff;" id="send_request">
+	<div style="padding-top: 0px;">
+		<div class="input_label">ФИО</div>
+		<input class="input_primary" id="full_name" type="text" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Компания</div>
+		<input class="input_primary" id="company" type="text" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Почта</div>
+		<input class="input_primary" id="email" type="text" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="padding-top: 15px;">
+		<div class="input_label">Телефон</div>
+		<input class="input_primary" id="phone" type="text" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="margin-top: 20px;">
+		<div class="btn_primary" onclick="intro.send_request();">Отправить</div>
+	</div>
+</div>

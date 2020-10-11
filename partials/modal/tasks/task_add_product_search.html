@@ -1,0 +1,13 @@
+{if $products}
+{section name=i loop=$products}
+<div class="modal_search_item">
+	<div class="modal_search_info">
+		<div>{$products[i].title}</div>
+		<div class="modal_search_info_sub">{$products[i].code}</div>
+	</div>
+	<i id="modal_product_{$products[i].id}" class="icon icon_success modal_search_delete{if $products[i].selected} active{/if}" onclick="task.product_toggle({$products[i].id}, '{$products[i].title}');"></i>
+</div>
+{/section}
+{else}
+<div class="modal_search_blank">Подходящих изделий не найдено. Измените условия поиска или добавьте новые изделия в систему.</div>
+{/if}

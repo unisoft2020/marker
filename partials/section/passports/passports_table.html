@@ -1,0 +1,38 @@
+{if $type == "active"}
+<div class="passport_item add"><div onclick="passport.edit_window(0);">
+	<div style="display: table; margin: 30px auto 0 auto;">
+		<div style="display: table-cell;">
+			<div style="background: #04368f22; width: 50px; height: 50px; border-radius: 50%;">
+				<span class="icon icon_plus" style="background: #04368f; color: #fff; width: 30px; margin: 10px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px;"></span>
+			</div>
+		</div>
+		<div style="display: table-cell;">
+			<span style="margin-left: 15px; color: #04368F; font-weight: 600;">Создать новый паспорт</span>
+		</div>
+	</div>
+</div></div>
+{/if}
+{if $passports}
+{section name=i loop=$passports}
+<div class="passport_item"><div onclick="passport.details({$passports[i].id});">
+	<i class="icon icon_ellipsis" onclick="common.menu_popup_toggle(this, event);">
+		<div class="menu_popup">
+			{if $type == "active"}
+			<div onclick="passport.archive_toggle({$passports[i].id}, 2);"><i class="icon icon_archive_add"></i> Архивировать</div>
+			{elseif $type == "archive"}
+			<div onclick="passport.archive_toggle({$passports[i].id}, 1);"><i class="icon icon_archive_remove"></i> Восстановить</div>
+			{/if}
+			<div onclick="passport.edit_window({$passports[i].id});"><i class="icon icon_edit"></i> Редактировать</div>
+			<div onclick="passport.delete_window({$passports[i].id});"><i class="icon icon_delete_5"></i> Удалить</div>
+		</div>
+	</i>
+	<div class="passport_item_status{if $type == "archive"} green{/if}">{$passports[i].status_title}</div>
+	<div class="passport_item_title">{$passports[i].title}</div>
+	<div class="passport_item_produced">Изготовлено: {$passports[i].produced}</div>
+	<div class="passport_item_sections">Заполнено разделов: {$passports[i].sections_completed}/{$passports[i].sections_all}</div>
+</div></div>
+{/section}
+{/if}
+{if !$passports && $type == "archive"}
+<div style="padding: 20px; border: 1px dashed #c2c8cf; border-radius: 3px; font-size: 12px; color: #5c626a;">Нет добавленных цифровых паспортов</div>
+{/if}

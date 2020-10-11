@@ -1,0 +1,10 @@
+cfg/general.inc.php
+partials_c/*.php
+servers/media/storage
+storage/*.png
+storage/xlsx/*.xlsx
+tests
+tmp
+vendor/*.php
+vendor
+vendor/
