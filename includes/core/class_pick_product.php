@@ -7,25 +7,29 @@
 	class Pick_Product {
 
 		// GENERAL
-		
-		public static function pick_products_list($pick_id) {
+        
+		public static function pick_products_list($pick_id, $query) {
 			// vars
 			$items = [];
-			$manufacturers = [];
+            // where
+			$where = [];
+			$where[] = "pick_products.pick_id='".$pick_id."'";
+            if ($query) {
+                $where[] = "products.title LIKE '%".$query."%'";
+            }
+            $where = implode(" AND ", $where);
 			// query
-			$q = DB::query("SELECT pick_id, product_id, created FROM pick_products WHERE pick_id='".$pick_id."';") or die (DB::error());
+			$q = DB::query("SELECT pick_products.pick_id, pick_products.product_id, pick_products.created FROM pick_products LEFT JOIN products using(product_id) WHERE $where GROUP BY pick_products.id;") or die (DB::error());
 			while ($row = DB::fetch_row($q)) {
 				$product = Product::product_info_full($row['product_id']);
-				if (!in_array($product['manufacturer']['title'], $manufacturers)) $manufacturers[] = $product['manufacturer']['title'];
 				$items[] = [
 					'id'=>$row['product_id'],
 					'title'=>$product['title'],
-					'manufacturer'=>$product['manufacturer']['title'],
 					'created'=>date('d.m.y в H:i', ts_timezone($row['created'], Session::$tz))
 				];
 			}
 			// output
-			return ['items'=>$items, 'manufacturers'=>implode(', ', $manufacturers)];
+			return ['items'=>$items];
 		}
 
 		public static function pick_products_report($data) {

@@ -545,6 +545,15 @@ function is_future_date(d, m, y) {
 	return now_date > date ? false : true;
 }
 
+function highlight(html, query) {
+    if(query.length > 0){
+        const regex = new RegExp(query, "gi");
+        html = html.replaceAll(regex, "<b style='background:yellow;'>$&</b>");
+    }
+    return html;   
+}
+
+
 // POLYFILLS
 
 if (!Element.prototype.closest) {

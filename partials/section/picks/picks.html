@@ -4,7 +4,7 @@
 		<div style="display: table; width: 100%; margin-top: 15px;">
 			<div style="display: table-cell; vertical-align: top;">
 				<div class="input_search">
-					<input id="picks_search" type="text" placeholder="Поиск" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
+					<input id="picks_search" type="text" placeholder="Поиск" oninput="pick.paginator(); input_error_hide(this);" value="{$search_query}" autocomplete="off" autocorrect="off" autocapitalize="off">
 					<i class="icon icon_search"></i>
 				</div>
 			</div>
